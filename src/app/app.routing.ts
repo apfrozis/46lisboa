@@ -14,9 +14,9 @@ import { AdminPromotionsComponent } from './examples/admin-promotions/admin-prom
 const routes: Routes =[
   
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'nucleoicons', component: NucleoiconsComponent },
+    /*{ path: 'nucleoicons', component: NucleoiconsComponent },
     { path: 'user-profile', component: ProfileComponent },
-    { path: 'home', component: ComponentsComponent },
+    { path: 'home', component: ComponentsComponent },*/
 
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
