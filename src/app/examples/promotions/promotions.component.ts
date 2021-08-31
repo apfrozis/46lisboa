@@ -30,7 +30,7 @@ export class PromotionsComponent implements OnInit {
 
 
     openDialog(): void {
-        const dialogRef = this.dialog.open(SpecialPromotionDialog, { height: '40%',
+        const dialogRef = this.dialog.open(SpecialPromotionDialog, { height: '50%',
             data: {description: "You've been eligible for a new promotion. Please show this message to a staff member.",
             promotion: '50 %', imageSource: "../../../assets/img/46_front.jpg"}
           });
