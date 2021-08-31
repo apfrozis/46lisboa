@@ -1,144 +1,169 @@
 <div class="section section-black">
-
     <div class="container">
+        <mat-tab-group style="margin-top:4%">
+            <mat-tab label="Gerir promoções">
 
 
-        <div class="tim-title" style="color: #907F73;">
-            <h2 style="margin-bottom: 5%;"><b>Criar promoções</b></h2>
-            <div style="padding: 5px; border: 1px solid #907F73">
-                <input type="file" class="file-input" #fileUpload>
-                <div class="file-upload" style="margin-top: 1%;">
-                    <!--{{'fileName' || "No file uploaded yet."}}-->
-                    Please upload promotion image
-
-                    <button mat-mini-fab style="background-color: #907F73; margin-left: 10px;" class="upload-btn"
-                        (click)="fileUpload.click()">
-                        <mat-icon>attach_file</mat-icon>
-                    </button>
-                </div>
 
 
-            <form class="example-form">   
-                <div class="margin">         
-                <mat-form-field class="example-full-width" floatLabel="never" style="padding: 3px; margin: 1px; border: 1px solid #907F73;">
-                  <mat-label><i>Escreva a descrição da promoção</i></mat-label>
-                  <textarea matInput></textarea>
-                </mat-form-field>
-            </div>
-            <p>Escolha a percentagem da promoção</p>
-                <div class="margin" style="padding: 5px; border: 1px solid #907F73; width: fit-content;">
-                <mat-form-field>
-                    <div >                            
-                  <select matNativeControl>
-                    <option  *ngFor="let element of promotion_options" value="element['value']">{{element.description}}</option>
-                  </select>
+                <div class="tim-title" style="color: #907F73;">
+                    <h2 style="margin-bottom: 5%;"><b>Criar promoções</b></h2>
+                    <div style="padding: 5px; border: 1px solid #907F73">
+                        <input type="file" class="file-input" #fileUpload>
+                        <div class="file-upload" style="margin-top: 1%;">
+                            <!--{{'fileName' || "No file uploaded yet."}}-->
+                            Por favor faça upload da imagem da promoção
+
+                            <button mat-mini-fab style="background-color: #907F73; margin-left: 10px;"
+                                class="upload-btn" (click)="fileUpload.click()">
+                                <mat-icon>attach_file</mat-icon>
+                            </button>
+                        </div>
+
+
+                        <form class="example-form">
+                            <div class="margin">
+                                <mat-form-field class="example-full-width" floatLabel="never">
+                                    <mat-label><i>Escreva a descrição da promoção</i></mat-label>
+                                    <textarea matInput></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="margin">
+                                <p>Escolha a categoria de clientes da promoção</p>
+                                <mat-form-field>
+                                    <div>
+                                        <select matNativeControl (change)="selectChangeHandler($event)">
+                                            <option *ngFor="let element of client_category_options"
+                                                [value]="element.value">
+                                                {{element.description}}</option>
+                                        </select>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                            <p style="margin-bottom: 4%;">Percentagem da promoção associada à categoria:
+                                {{ selectedCategory }}</p>
+                            <div class="margin">
+                                <button class="btn" (click)="fileUpload.click()"> Criar promoção
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </mat-form-field>
-            </div>
-            <p>Escolha a categoria de clientes da promoção</p>
-            <div class="margin" style="padding: 5px; border: 1px solid #907F73; width: fit-content;">
-            <mat-form-field>
-                <div >                            
-              <select matNativeControl>
-                <option  *ngFor="let element of client_category_options" value="element['value']">{{element.description}}</option>
-              </select>
-                </div>
-            </mat-form-field>
-        </div>
-
-            <div class="margin">
-                <button class="btn" (click)="fileUpload.click()"> Criar promoção
-            </button>
-        </div>
-              </form>
-            </div>
 
 
 
-            <br>
+                    <br>
 
-            <h2><b>Eliminar promoções</b></h2>
+                    <h2><b>Eliminar promoções</b></h2>
 
-            <mat-grid-list cols="2" >
-                <mat-grid-tile>
-                    <img class="tile-image" src="../../../assets/img/soroush-karimi.jpg" alt="Random first slide">
-                    <div class="caption" style="background-color: white; opacity: 70%; margin-bottom: 1%;">
-                    <p style="color: #4E261C"> <b>Get discount for your next visit</b></p>
-                    <p style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>30 %</b></p>
-                    <p style="color: #4E261C"><b>First promotion</b></p>
-                    <p style="color: #4E261C"><b>Categoria: Categoria 1</b></p>
-                    <button mat-mini-fab style="background-color: #907F73;" class="upload-btn"
-                    (click)="fileUpload.click()">
-                    <mat-icon>delete</mat-icon>
-                </button>
-                </div>
-                </mat-grid-tile>
-                <mat-grid-tile style="margin-left: 10px;">
-                    <img class="tile-image" src="../../../assets/img/federico-beccari.jpg" alt="Random first slide">
-                    <div class="caption" style="background-color: white; opacity: 70%; margin-bottom: 1%;">
-                    <p style="color: #4E261C"> <b>Get discount for your next visit</b></p>
-                    <p style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>30 %</b></p>
-                    <p style="color: #4E261C"><b>Second promotion</b></p>
-                    <p style="color: #4E261C"><b>Categoria: Categoria 2</b></p>
-                    <button mat-mini-fab style="background-color: #907F73;" class="upload-btn"
-                    (click)="fileUpload.click()">
-                    <mat-icon>delete</mat-icon>
-                </button>
-                </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <img class="tile-image" src="../../../assets/img/joshua-stannard.jpg" alt="Random first slide">
-                    <div class="caption" style="background-color: white; opacity: 70%; margin-bottom: 1%;">
-                    <p style="color: #4E261C"> <b>Get discount for your next visit</b></p>
-                    <p style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>30 %</b></p>
-                    <p style="color: #4E261C"><b>Third promotion</b></p>
-                    <p style="color: #4E261C"><b>Categoria: Categoria 3</b></p>
-                    <button mat-mini-fab style="background-color: #907F73;" class="upload-btn"
-                    (click)="fileUpload.click()">
-                    <mat-icon>delete</mat-icon>
-                </button>
-                </div>
-                </mat-grid-tile>
-              </mat-grid-list>
-
-
-            <br>
-
-            <h2><b>Visualização do cliente</b></h2>
-
-            <div class="mr-auto ml-auto margin">
-                <div class="card page-carousel">
-                    <ngb-carousel>
-                        <ng-template ngbSlide>
-                            <img src="../../../assets/img/soroush-karimi.jpg" alt="Random first slide">
-                            <div class="carousel-caption"
-                                style="background-color: white; opacity: 70%; margin-bottom: 1%;">
-                                <h3 style="color: #4E261C"> <b>Get discount for your next visit</b></h3>
-                                <h1 style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>30 %</b></h1>
-                                <p style="color: #4E261C"><b>First promotion</b></p>
+                    <mat-grid-list cols="2">
+                        <mat-grid-tile *ngFor="let promotion of promotions; let i = index" [attr.data-index]="i"
+                            [style]="getStyle(i)">
+                            <img class="tile-image" [src]="promotion.src" alt="Random first slide">
+                            <div class="caption" style="background-color: white; opacity: 70%; margin-bottom: 1%;">
+                                <p style="color: #4E261C"> <b>{{promotion.description}}</b></p>
+                                <p style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>{{promotion.value}}
+                                        %</b></p>
+                                <p style="color: #4E261C"><b>{{promotion.small_description}}</b></p>
+                                <p style="color: #4E261C"><b>Categoria: {{promotion.category}}</b></p>
+                                <button mat-mini-fab style="background-color: #907F73;" class="upload-btn"
+                                    (click)="fileUpload.click()">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
                             </div>
-                        </ng-template>
-                        <ng-template ngbSlide>
-                            <img src="../../../assets/img/federico-beccari.jpg" alt="Random second slide">
-                            <div class="carousel-caption"
-                                style="background-color: white; opacity: 70%; margin-bottom: 1%;">
-                                <h3 style="color: #4E261C"> <b>Get discount for your next visit</b></h3>
-                                <h1 style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>30 %</b></h1>
-                                <p style="color: #4E261C"><b>Second promotion</b></p>
-                            </div>
-                        </ng-template>
-                        <ng-template ngbSlide>
-                            <img src="../../../assets/img/joshua-stannard.jpg" alt="Random third slide">
-                            <div class="carousel-caption"
-                                style="background-color: white; opacity: 70%; margin-bottom: 1%;">
-                                <h3 style="color: #4E261C"> <b>Get discount for your next visit</b></h3>
-                                <h1 style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>30 %</b></h1>
-                                <p style="color: #4E261C"><b>Third promotion</b></p>
-                            </div>
-                        </ng-template>
-                    </ngb-carousel>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+
+
+                    <br>
+
+                    <h2><b>Visualização do cliente</b></h2>
+
+                    <div class="mr-auto ml-auto margin">
+                        <div class="card page-carousel">
+                            <ngb-carousel>
+                                <ng-template ngbSlide *ngFor="let promotion of promotions">
+                                    <img [src]="promotion.src" alt="Random first slide">
+                                    <div class="carousel-caption"
+                                        style="background-color: white; opacity: 70%; margin-bottom: 1%;">
+                                        <h3 style="color: #4E261C"> <b>{{promotion.description}}</b></h3>
+                                        <h1 style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>{{promotion.value}} %</b></h1>
+                                        <p style="color: #4E261C"><b>{{promotion.small_description}}</b></p>
+                                    </div>
+                                </ng-template>
+                            </ngb-carousel>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+            </mat-tab>
+            <mat-tab label="Gerir promoções bónus">
+
+                <div class="tim-title" style="color: #907F73;">
+                    <h2 style="margin-bottom: 5%;"><b>Adicionar promoção bónus a uma categoria</b></h2>
+                    <div style="padding: 5px; border: 1px solid #907F73">
+                        <input type="file" class="file-input" #fileUpload>
+                        <div class="file-upload" style="margin-top: 1%;">
+                            <!--{{'fileName' || "No file uploaded yet."}}-->
+                            Por favor faça upload da imagem da promoção
+
+                            <button mat-mini-fab style="background-color: #907F73; margin-left: 10px;"
+                                class="upload-btn" (click)="fileUpload.click()">
+                                <mat-icon>attach_file</mat-icon>
+                            </button>
+                        </div>
+
+
+                        <form class="example-form">
+                            <div class="margin">
+                                <mat-form-field class="example-full-width" floatLabel="never">
+                                    <mat-label><i>Escreva a descrição da promoção bónus</i></mat-label>
+                                    <textarea matInput></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="margin">
+                                <p>Escolha a categoria à qual quer adicionar esta promoção bónus</p>
+                                <mat-form-field>
+                                    <div>
+                                        <select matNativeControl (change)="selectChangeHandler($event)">
+                                            <option *ngFor="let element of client_category_options"
+                                                [value]="element.value">
+                                                {{element.description}}</option>
+                                        </select>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                            <div class="margin">
+                                <p>Percentagem da promoção associada à promoção bónus: {{ selectedCategory }}</p>
+                                <input type="text" matInput
+                                    style="padding: 3px; margin: 1px; border: 1px solid #907F73; max-width: 50px;">
+                            </div>
+                            <div class="margin">
+                                <button class="btn" (click)="fileUpload.click()"> Criar promoção bónus
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <h2><b>Eliminar promoções bónus</b></h2>
+
+                    <mat-grid-list cols="2">
+                        <mat-grid-tile *ngFor="let promotion of promotions; let i = index" [attr.data-index]="i"
+                            [style]="getStyle(i)">
+                            <img class="tile-image" [src]="promotion.src" alt="Random first slide">
+                            <div class="caption" style="background-color: white; opacity: 70%; margin-bottom: 1%;">
+                                <p style="color: #4E261C"> <b>{{promotion.description}}</b></p>
+                                <p style="margin-top: 10%; margin-bottom: 10%; color: #4E261C"><b>{{promotion.value}}
+                                        %</b></p>
+                                <p style="color: #4E261C"><b>{{promotion.small_description}}</b></p>
+                                <p style="color: #4E261C"><b>Categoria: {{promotion.category}}</b></p>
+                                <button mat-mini-fab style="background-color: #907F73;" class="upload-btn"
+                                    (click)="fileUpload.click()">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 </div>

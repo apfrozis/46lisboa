@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import  { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { LandingComponent } from './examples/landing/landing.component';
 import { SignupComponent } from './examples/signup/signup.component';
@@ -26,6 +27,8 @@ import { PromotionsComponent } from './examples/promotions/promotions.component'
 import { QrcodeComponent } from './examples/qrcode/qrcode.component';
 import { AdminPromotionsComponent } from './examples/admin-promotions/admin-promotions.component';
 import { CommonModule } from '@angular/common';
+import { SpecialPromotionDialog } from './components/special-promotion-dialog/special-promotion-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -38,7 +41,8 @@ import { CommonModule } from '@angular/common';
     ProfileComponent,
     QrcodeComponent,
     PromotionsComponent,
-    AdminPromotionsComponent
+    AdminPromotionsComponent,
+    SpecialPromotionDialog
   ],
   imports: [
     BrowserModule,
@@ -54,9 +58,12 @@ import { CommonModule } from '@angular/common';
     TextFieldModule,
     MatInputModule,
     NoopAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule,
+    MatDialogModule
     
   ],
+  entryComponents: [SpecialPromotionDialog],
   providers: [],
   bootstrap: [AppComponent]
 })
